@@ -3,50 +3,74 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>Essential Blog</title>
+	<link rel="stylesheet" type="text/css" href="format.css">
   </head>
   <body>
     <h1>Essential Blog</h1>
-	<!--horizontale Linie: -->
-	<hr>
 	
-	<!--linker Teil der Seite mit den Artikeln -->
-	<div id="articleSection" style="width: 80%; float: left;">
-	
-		<div id="new" style="float: left;"><button type="button">Neuer Artikel</button> </div>
-		
+	<div id="header">
+			<div id="new">
+			<button type="button">Neuer Artikel</button> 
+		</div>
 		<!--Sortierungs-Auswahl: -->
-		<div id="sorter" style="float: right;">
+		<div id="sorter">
 			Sortierung:  
 			<select>
-			  <option value="newest">neuester Artikel zuerst</option>
-			  <option value="oldest">ältester Artikel zuerst</option>
-			  <option value="mostPopular">beliebtester Artikel zuerst</option>
+			<option value="newest">Neuester Artikel zuerst</option>
+			<option value="oldest">Ältester Artikel zuerst</option>
+			<option value="mostPopular">Beliebtester Artikel zuerst</option>
 			</select> 
 		</div>
-		<br>
-		<br>
+		</div>
+	<div style="clear:both" />
+	<!--rechter Teil der Seite mit den Kategorien -->	
+	<div id="categorySection">
+		Kategorien: <br>
+		<ul class="categories">
+			<li><a href="">Alltag</a> </li>
+			<li><a href="">Urlaub</a> </li>
+			<li><a href="">Sport</a> </li>
+			<li><a href="">Party</a> </li>
+			<li><a href="">Sonstiges</a></li>
+		</ul>
+	</div>
+	
+	
+	<!--linker Teil der Seite mit den Artikeln -->
+	<div id="articleSection">
 		<!--Abschnitt für 1 Artikel + Kommentare -->
-		<table class= "articleBorder" style="width:100%; border:1px solid;">
+		<table class= "articleBorder">
 			<tr>
 				<!--Artikel-->
 				<td class="article">
 					<!--Titel + Header-->
-					<div class="articleTitle">Titel des Artikels</div>
-					<div class="articleHeader"style="float:right">
-						geschrieben von: <label for="author">Autor</label> &nbsp;&nbsp; am: <label for="date">Datum</label>
+					<div class="articleTitle">Lorem ipsum dolor sit amet, consetetur</div>
+					<div class="articleHeader">
+						geschrieben von: 
+						<label for="author">Lukas Huwe</label>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						am: 
+						<label for="date">09. Dezember 2014</label>
 					</div>
-					<br>
+					<br />
 					<!--Artikel-Text-->
-					<div class="articleText">blabla</div>
+					<div class="articleText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+					sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+					diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita 
+					kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+					dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt 
+					ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+					justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+					Lorem ipsum dolor sit amet.</div>
 					<a href="">Mehr...</a>
 				</td>
 			</tr>
 			<tr>
 				<!--Kommentare eingeklappt-->
 				<td class="comments">
-					<div style="float:left;"><img src="Pfeil_rechts.png" alt="Kommentare_aufklappen" height="15" width="15">Kommentare anzeigen</div>
+					<div><img src="Pfeil_rechts.png" alt="Kommentare_aufklappen" height="15" width="15">Kommentare anzeigen</div>
 					<!--Likes Artikel-->
-					<div style="float:right">
+					<div>
 						<img src="smiley.png" alt="like" height="30" width="30">
 						<br>
 						<label for="likes">Anzahl Likes Artikel</label>
@@ -57,9 +81,9 @@
 			<tr>
 				<!--Kommentare ausgeklappt-->
 				<td class="comments">
-					<div  style="float:left;"><img src="Pfeil_unten.png" alt="Kommentare-zuklappen" height="15" width="15">Kommentare ausblenden</div>
+					<div><img src="Pfeil_unten.png" alt="Kommentare-zuklappen" height="15" width="15">Kommentare ausblenden</div>
 					<!--Likes Artikel-->
-					<div style="float:right">
+					<div>
 						<img src="smiley.png" alt="like" height="30" width="30">
 						<br>
 						<label for="likes">Anzahl Likes Artikel</label>
@@ -71,14 +95,14 @@
 			<tr>
 				<td class="commentDetail">
 					<!--Kommentar-Header-->
-					<div class="commentHeader"style="float:right">
+					<div class="commentHeader">
 						von: <label for="author">Autor</label> &nbsp;&nbsp; am: <label for="date">Datum</label>
 					</div>
 					<br>
 					<!--Kommentar-Text-->
 					<div class="commentText">voll stark!</div>
 					<!--Likes Kommentar-->
-					<div style="float:right">
+					<div>
 						<img src="smiley.png" alt="like" height="30" width="30">
 						<br>
 						<label for="likes">Anzahl Likes Kommi</label>
@@ -88,7 +112,7 @@
 			<!--neuen Kommentar eingeben-->
 			<tr>
 				<td class="newComment">
-					<input type="text" name="commentBox1" placeholder="neuer Kommentar..." style="width: 90%"></input>
+					<input type="text" name="commentBox1" placeholder="neuer Kommentar..."></input>
 					<br>
 					<button type="button">Speichern</button> 
 				</td>
@@ -96,15 +120,6 @@
 		</table>
 	</div>
 	
-	<!--rechter Teil der Seite mit den Kategorien -->	
-	<div id="categorySection"style="width:19%; float: right; border: 1px solid;">
-		Kategorien: <br>
-			<a href="">Alltag</a> <br><br>
-			<a href="">Urlaub</a> <br><br>
-			<a href="">Sport</a> <br><br>
-			<a href="">Party</a> <br><br>
-			<a href="">Sonstiges</a>		
-	</div>
 	
 	<br>
   </body>
