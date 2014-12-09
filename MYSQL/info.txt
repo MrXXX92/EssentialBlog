@@ -1,0 +1,3 @@
+- DB importieren
+- Username: root
+- Passwort für root --> geheim
