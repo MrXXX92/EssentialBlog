@@ -1,3 +1,4 @@
-- DB importieren
-- Username: root
+- DB in phpMyAdmin anlegen (Alternativ EssentialBlog.sql um Erstellung der DB erweitern)
+- DB-Schema importieren ("Importieren" Funktion in phpMyAdmin nutzen)
+- Username: root (User ändern oder neu anlegen)
 - Passwort für root --> geheim
