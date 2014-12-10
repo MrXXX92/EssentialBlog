@@ -11,6 +11,38 @@
 		return mysql_result($result, 0);
 	}	
 
+	//Ausgabe: Array mit Artikel_IDs entsprechend selektierter Anzahl, Kategorie und Sortierung
+	function GetSelectedArticles($order,$articlecategory,$displayedarticles)
+	{
+		//Abfangen des order-Parameters aus Link und anschlieﬂendes Umwandeln in SQL-Query
+		if ($order=="newestfirst") 
+		{
+			$order = "article_id DESC";
+		} 
+		elseif ($order=="oldestfirst") 
+		{
+			$order = "article_id ASC";
+		} 
+		elseif ($order=="mostlikedfirst")
+		{
+			$order = "like_count DESC";
+		}
+		else 
+		{
+			$order = "article_id DESC";
+		}
+		$query ="
+		SELECT t_article.article_id FROM t_article
+		INNER JOIN t_category ON t_category.category_id = t_article.category_id
+		WHERE t_category.title LIKE '$articlecategory'
+		ORDER BY $order
+		LIMIT $displayedarticles";
+		GetDBConnection();
+		$result = mysql_query($query);
+		CloseDBConnection();
+		return $result;
+	}		
+
 	//Ausgabe: Artikel Titel abh‰ngig von Artikel_ID
 	function GetArticleTitle($article_id)
 	{

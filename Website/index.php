@@ -1,15 +1,17 @@
 <?php
-	include "connection.php";
-	include "function.php";
+	include "include/connection.php";
+	include "include/function.php";
+	include "include/linkparameter.php";
+	
 	echo "<!doctype html>\n";
 	echo "<html>\n";
 	echo "  <head>\n";
 	echo "    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n";
 	echo "    <title>Essential Blog</title>\n";
-	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"format.css\">\n";
+	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"include/format.css\">\n";
 	echo "  </head>\n";
 	echo "  <body>\n";
-	echo "    <h1>Essential Blog</h1>\n";
+	echo "    <h1><a href=/index.php>Essential Blog</a></h1>\n";
 	echo "	\n";
 	echo "	<div id=\"header\">\n";
 	echo "			<div id=\"new\">\n";
@@ -30,11 +32,13 @@
 	echo "	<div id=\"categorySection\">\n";
 	echo "		Kategorien: <br>\n";
 	echo "		<ul class=\"categories\">\n";
+	
+	//Anzeigen der Kategorien mit Hyperlink zur Kategoriefilterung und Anzeige der Artikel-Anzahl pro Kategorie
 	$category_array = GetCategorys();
 	while ($row = mysql_fetch_array($category_array, MYSQL_NUM)) {
 		$category_name = $row[0];
 		$category_sum= $row[1];
-		echo "<li><a href=\"\">".$category_name." (".$category_sum.")</a> </li>";
+		echo "<li><a href=?&order=".$order."&articlecategory=".$category_name."&displayedarticles=".$displayedarticles.">".$category_name." (".$category_sum.")</a> </li>";
 	}
 	echo "		</ul>\n";
 	echo "	</div>\n";
@@ -43,9 +47,10 @@
 	echo "	<!--linker Teil der Seite mit den Artikeln -->\n";
 	echo "	<div id=\"articleSection\">\n";
 	
-	$article_count = GetCountArticle();
-	for ($article_id = 1; $article_id <= $article_count; $article_id ++) {
-
+	//Anzeige Artikel mit Hilfe  von GetSelectedArticles Funktion
+	$article_id_array = GetSelectedArticles($order,$articlecategory,$displayedarticles);
+	while ($row = mysql_fetch_array($article_id_array, MYSQL_NUM)) {
+		$article_id = $row[0];
 		echo "		<!--Abschnitt für 1 Artikel + Kommentare -->\n";
 		echo "		<table class= \"articleBorder\">\n";
 		echo "			<tr>\n";
@@ -86,8 +91,9 @@
 		echo "			</tr>\n";
 		echo "			\n";
 		
-		$comment_array = GetArticleComments($article_id);
+		//Anzeige der zur Artikel_ID zugehörigen Kommentare
 		echo "			<!--Liste der Kommentare-->";
+		$comment_array = GetArticleComments($article_id);
 		while ($row = mysql_fetch_array($comment_array, MYSQL_NUM)) {
 			$comment_author = $row[0];
 			$comment_text = $row[1];
