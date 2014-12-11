@@ -9,6 +9,9 @@
 	echo "    <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n";
 	echo "    <title>Essential Blog</title>\n";
 	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"include/format.css\">\n";
+	
+	//Einbindung der Javascript Datei
+	echo "	<script language=\"javascript\" type=\"text/javascript\" src=\"clientFunctions.js\"></script>\n";
 	echo "  </head>\n";
 	echo "  <body>\n";
 	echo "    <h1><a href=/index.php>Essential Blog</a></h1>\n";
@@ -22,7 +25,7 @@
 	echo "			Sortierung:  \n";
 	echo "			<select>\n";
 	echo "			<option value=\"newest\">Neuester Artikel zuerst</option>\n";
-	echo "			<option value=\"oldest\">Ältester Artikel zuerst</option>\n";
+	echo "			<option value=\"oldest\">�ltester Artikel zuerst</option>\n";
 	echo "			<option value=\"mostPopular\">Beliebtester Artikel zuerst</option>\n";
 	echo "			</select> \n";
 	echo "		</div>\n";
@@ -51,7 +54,7 @@
 	$article_id_array = GetSelectedArticles($order,$articlecategory,$displayedarticles);
 	while ($row = mysql_fetch_array($article_id_array, MYSQL_NUM)) {
 		$article_id = $row[0];
-		echo "		<!--Abschnitt für 1 Artikel + Kommentare -->\n";
+		echo "		<!--Abschnitt f�r 1 Artikel + Kommentare -->\n";
 		echo "		<table class= \"articleBorder\">\n";
 		echo "			<tr>\n";
 		echo "				<!--Artikel-->\n";
@@ -61,7 +64,7 @@
 		echo "					<div class=\"articleHeader\">\n";
 		echo "						geschrieben von: \n";
 		echo "						<label for=\"author\">".GetArticleAuthor($article_id)."</label>\n";
-		echo "						        \n";
+		echo "						        \n";
 		echo "						am: \n";
 		echo "						<label for=\"date\">".GetArticleDate($article_id)."</label>\n";
 		echo "					</div>\n";
@@ -78,20 +81,20 @@
 		echo "			</tr>\n";
 		echo "			<tr>\n";
 		echo "				<!--Kommentare eingeklappt-->\n";
-		echo "				<td class=\"comments\">\n";
-		echo "					<div><img src=\"images\Pfeil_rechts.png\" alt=\"Kommentare_aufklappen\" height=\"15\" width=\"15\">Kommentare anzeigen</div>\n";
+		echo "				<td id=\"HideComment".$article_id"\" class=\"HideComments\">\n";
+		echo "					<div onclick=\"hideComments("$article_id")\"><img src=\"images\Pfeil_rechts.png\" alt=\"Kommentare_aufklappen\" height=\"15\" width=\"15\">Kommentare anzeigen</div>\n";
 		echo "					<!--Likes Artikel-->\n";
 		echo "				</td>\n";
 		echo "			</tr>\n";
 		echo "			\n";
 		echo "			<tr>\n";
 		echo "				<!--Kommentare ausgeklappt-->\n";
-		echo "				<td class=\"comments\">\n";
-		echo "					<div><img src=\"images\Pfeil_unten.png\" alt=\"Kommentare-zuklappen\" height=\"15\" width=\"15\">Kommentare ausblenden</div>\n";
+		echo "				<td id=\"ShowComment".$article_id"\" class=\"ShowComments\">\n";
+		echo "					<div onclick=\"showComments("$article_id")\"><img src=\"images\Pfeil_unten.png\" alt=\"Kommentare-zuklappen\" height=\"15\" width=\"15\">Kommentare ausblenden</div>\n";
 		echo "			</tr>\n";
 		echo "			\n";
 		
-		//Anzeige der zur Artikel_ID zugehörigen Kommentare
+		//Anzeige der zur Artikel_ID zugeh�rigen Kommentare
 		echo "			<!--Liste der Kommentare-->";
 		$comment_array = GetArticleComments($article_id);
 		while ($row = mysql_fetch_array($comment_array, MYSQL_NUM)) {
@@ -99,11 +102,13 @@
 			$comment_text = $row[1];
 			$comment_time = $row[2];
 			$comment_likes = $row[3];
-			echo "			<tr>\n";
+			
+			//Alle Kommentare eines Artikels geh�ren zur gleichen Klasse um sie zusammen ein- und ausblenden zu k�nnen
+			echo "			<tr class=\"comment".$article_id" comments\">\n";
 			echo "				<td class=\"commentDetail\">\n";
 			echo "					<!--Kommentar-Header-->\n";
 			echo "					<div class=\"commentHeader\">\n";
-			echo "						von: <label for=\"author\">".$comment_author."</label>    am: <label for=\"date\">".$comment_time."</label>\n";
+			echo "						von: <label for=\"author\">".$comment_author."</label>    am: <label for=\"date\">".$comment_time."</label>\n";
 			echo "					</div>\n";
 			echo "					<br>\n";
 			echo "					<!--Kommentar-Text-->\n";
