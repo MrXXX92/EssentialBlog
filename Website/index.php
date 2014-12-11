@@ -81,16 +81,16 @@
 		echo "			</tr>\n";
 		echo "			<tr>\n";
 		echo "				<!--Kommentare eingeklappt-->\n";
-		echo "				<td id=\"HideComment".$article_id"\" class=\"HideComments\">\n";
-		echo "					<div onclick=\"hideComments("$article_id")\"><img src=\"images\Pfeil_rechts.png\" alt=\"Kommentare_aufklappen\" height=\"15\" width=\"15\">Kommentare anzeigen</div>\n";
+		echo "				<td id=\"HideComment".$article_id."\" class=\"HideComments\">\n";
+		echo "					<div onclick=\"hideComments(".$article_id.")\"><img src=\"images\Pfeil_rechts.png\" alt=\"Kommentare_aufklappen\" height=\"15\" width=\"15\">Kommentare anzeigen</div>\n";
 		echo "					<!--Likes Artikel-->\n";
 		echo "				</td>\n";
 		echo "			</tr>\n";
 		echo "			\n";
 		echo "			<tr>\n";
 		echo "				<!--Kommentare ausgeklappt-->\n";
-		echo "				<td id=\"ShowComment".$article_id"\" class=\"ShowComments\">\n";
-		echo "					<div onclick=\"showComments("$article_id")\"><img src=\"images\Pfeil_unten.png\" alt=\"Kommentare-zuklappen\" height=\"15\" width=\"15\">Kommentare ausblenden</div>\n";
+		echo "				<td id=\"ShowComment".$article_id."\" class=\"ShowComments\">\n";
+		echo "					<div onclick=\"showComments(".$article_id.")\"><img src=\"images\Pfeil_unten.png\" alt=\"Kommentare-zuklappen\" height=\"15\" width=\"15\">Kommentare ausblenden</div>\n";
 		echo "			</tr>\n";
 		echo "			\n";
 		
@@ -104,7 +104,7 @@
 			$comment_likes = $row[3];
 			
 			//Alle Kommentare eines Artikels gehören zur gleichen Klasse um sie zusammen ein- und ausblenden zu können
-			echo "			<tr class=\"comment".$article_id" comments\">\n";
+			echo "			<tr class=\"comment".$article_id." comments\">\n";
 			echo "				<td class=\"commentDetail\">\n";
 			echo "					<!--Kommentar-Header-->\n";
 			echo "					<div class=\"commentHeader\">\n";
