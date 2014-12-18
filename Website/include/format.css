@@ -67,8 +67,10 @@ h1{
 /*Pfeil "Kommentare ausblenden" und die Kommentare an sich sind initial unsichtbar*/
 .HideComments{
 	visibility: hidden;
+	display: none;
 }
 
 .comments{
 	visibility: hidden;
+	display: none;
 }
