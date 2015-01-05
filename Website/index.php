@@ -34,7 +34,7 @@
 	echo "	<!--rechter Teil der Seite mit den Kategorien -->	\n";
 	echo "	<div id=\"categorySection\">\n";
 	echo "		Kategorien: <br>\n";
-	echo "		<ul class=\"categories\">\n";
+	echo "		<ul id=\"categories\">\n";
 	
 	//Anzeigen der Kategorien mit Hyperlink zur Kategoriefilterung und Anzeige der Artikel-Anzahl pro Kategorie
 	$category_array = GetCategorys();
@@ -47,13 +47,14 @@
 	echo "	</div>\n";
 	echo "	\n";
 	echo "	\n";
-	echo "	<!--linker Teil der Seite mit den Artikeln -->\n";
-	echo "	<div id=\"articleSection\">\n";
+	
 	
 	//Anzeige Artikel mit Hilfe  von GetSelectedArticles Funktion
 	$article_id_array = GetSelectedArticles($order,$articlecategory,$displayedarticles);
 	while ($row = mysql_fetch_array($article_id_array, MYSQL_NUM)) {
 		$article_id = $row[0];
+		echo "	<!--linker Teil der Seite mit den Artikeln -->\n";
+	echo "	<div id=\"articleSection\">\n";
 		echo "		<!--Abschnitt für 1 Artikel + Kommentare -->\n";
 		echo "		<table class= \"articleBorder\">\n";
 		echo "			<tr>\n";
@@ -104,23 +105,23 @@
 			$comment_likes = $row[3];
 			
 			//Alle Kommentare eines Artikels gehören zur gleichen Klasse um sie zusammen ein- und ausblenden zu können
-			echo "			<tr class=\"comment".$article_id." comments\">\n";
-			echo "				<td class=\"commentDetail\">\n";
-			echo "					<!--Kommentar-Header-->\n";
-			echo "					<div class=\"commentHeader\">\n";
-			echo "						von: <label for=\"author\">".$comment_author."</label>    am: <label for=\"date\">".$comment_time."</label>\n";
-			echo "					</div>\n";
+			echo "		<tr class=\"comment".$article_id." comments\">\n";
+			echo "			<td class=\"commentDetail\">\n";
+			echo "				<!--Kommentar-Header-->\n";
+			echo "				<div class=\"commentHeader\">\n";
+			echo "					von: <label for=\"author\">".$comment_author."</label>    am: <label for=\"date\">".$comment_time."</label>\n";
+			echo "				</div>\n";
+			echo "				<br>\n";
+			echo "				<!--Kommentar-Text-->\n";
+			echo "				<div class=\"commentText\">".$comment_text."</div>\n";
+			echo "				<!--Likes Kommentar-->\n";
+			echo "				<div>\n";
+			echo "					<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
 			echo "					<br>\n";
-			echo "					<!--Kommentar-Text-->\n";
-			echo "					<div class=\"commentText\">".$comment_text."</div>\n";
-			echo "					<!--Likes Kommentar-->\n";
-			echo "					<div>\n";
-			echo "						<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
-			echo "						<br>\n";
-			echo "						<label for=\"likes\">".$comment_likes."</label>\n";
-			echo "					</div>\n";
-			echo "				</td>\n";
-			echo "			</tr>\n";
+			echo "					<label for=\"likes\">".$comment_likes."</label>\n";
+			echo "				</div>\n";
+			echo "			</td>\n";
+			echo "		</tr>\n";
 		}
 		echo "			<!--neuen Kommentar eingeben-->\n";
 		echo "			<tr>\n";
@@ -131,8 +132,9 @@
 		echo "				</td>\n";
 		echo "			</tr>\n";
 		echo "		</table>\n";
+		echo "	</div>\n";
 	}	
-	echo "	</div>\n";
+	
 	echo "	\n";	
 	echo "	\n";
 	echo "	<br>\n";
