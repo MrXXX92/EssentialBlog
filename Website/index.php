@@ -11,7 +11,7 @@
 	echo "	<link rel=\"stylesheet\" type=\"text/css\" href=\"include/format.css\">\n";
 	
 	//Einbindung der Javascript Datei
-	echo "	<script language=\"javascript\" type=\"text/javascript\" src=\"clientFunctions.js\"></script>\n";
+	echo "	<script language=\"javascript\" type=\"text/javascript\" src=\"include\clientFunctions.js\"></script>\n";
 	echo "  </head>\n";
 	echo "  <body>\n";
 	echo "    <h1><a href=/index.php>Essential Blog</a></h1>\n";
@@ -76,7 +76,6 @@
 		echo "					<br />\n";
 		echo "					<!--Artikel-Text-->\n";
 		echo "					<div class=\"articleText\">".GetArticleText($article_id)."</div>\n";
-		echo "					<a href=\"\">Mehr...</a>\n";
 		echo "					<div>\n";
 		echo "						<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
 		echo "						<br>\n";
