@@ -24,6 +24,6 @@
 		$articlecategory = $_GET['articlecategory'];
 	}else{
 		// Parameter ist im Link nicht definiert/ Default Wert
-		$articlecategory = "%";
+		$articlecategory = '%';
 	}
 ?>
