@@ -25,9 +25,13 @@ textarea{
 }
 
 input{
-	width:350%;
+	width:90%;
 	font-family:Comic Sans MS, Arial, Times New Roman;
 	}
+	
+input.newTitle{
+	width:350%;
+}
 	
 button{
 	font-family:Comic Sans MS, Arial, Times New Roman;

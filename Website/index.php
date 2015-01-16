@@ -133,6 +133,7 @@
 		echo "			</tr>\n";
 		echo "		</table>\n";
 		echo "	</div>\n";
+		echo " <p>\n";
 	}	
 	
 	echo "	\n";	
