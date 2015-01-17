@@ -77,9 +77,10 @@
 		echo "					<!--Artikel-Text-->\n";
 		echo "					<div class=\"articleText\">".GetArticleText($article_id)."</div>\n";
 		echo "					<div>\n";
-		echo "						<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
-		echo "						<br>\n";
-		echo "						<label for=\"likes\">".GetArticleLikes($article_id)."</label>\n";
+		echo "						<p align='right'>";
+		echo "							<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
+		echo "							<label for=\"likes\">".GetArticleLikes($article_id)."</label>\n";
+		echo "						</p>";	
 		echo "					</div>\n";
 		echo "				</td>\n";
 		echo "			</tr>\n";

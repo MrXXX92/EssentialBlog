@@ -48,21 +48,21 @@
 					<td>
 						<!--Eingabe Titel-->
 						<form method="post" action="newArticle.php"  >
-						<input type="text" name="newTitle" class="newTitle" placeholder="Titel"></input>
+						<input type="text" name="newTitle" class="new" placeholder="Titel"></input>
 					</td>
 				</tr>
 				
 				<tr>
 					<td>
 						<!--Eingabe Author-->
-						<input type="text" name="newAuthor" class="newAuthor" placeholder="Author"></input>
+						<input type="text" name="newAuthor" class="new" placeholder="Author"></input>
 					</td>
 				</tr>				
 				
 				<tr>
 					<td>
 						<!--Eingabe Kategorie-->
-						<input type="text" name="newCategory" class="newCategory" placeholder="Kategorie"></input>
+						<input type="text" name="newCategory" class="new" placeholder="Kategorie"></input>
 					</td>
 				</tr>	
 				<tr>
