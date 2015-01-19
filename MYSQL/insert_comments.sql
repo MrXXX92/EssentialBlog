@@ -1,0 +1,41 @@
+Insert Into t_comment (author, text, article_id, like_count) Values ('Susi', 'Wow, das hört sich ja echt aufregend an! Du musst mir ganz bald mal ein paar erste Fotos schicken ;) Pass auf dich auf!', 6, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Karl', 'Geil, erstmal von nem Briten vollquatschen lassen :D gut, dass du Englisch kannst^^ Viel Spaß noch!', 6, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Christina', 'Hey danke für das Update! Ich wünsch dir auch noch viel Spaß!', 6, 0);
+
+Insert Into t_comment (author, text, article_id, like_count) Values ('Alex', 'Ich schließe mich an. Steig da auch null durch..', 7, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Jonas', 'Ist doch alles gar nicht so wild ;) Wenn ihr wollt, können wir uns mal zusammen zum lernen treffen.', 7, 2);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Johannes', 'Das wäre natürlich Bombe, wenn du das verstanden hast^^ Wann hastn Zeit?', 7, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Alex', 'wäre durchaus auch interessiert ;)', 7, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Jonas', 'Am Donnerstag z.B. so ab 18.30 bei mir?', 7, 2);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Johannes', 'Jo!', 7, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Alex', 'Bin auch am Start!', 7, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Jonas', 'Alles klar!', 7, 0);
+
+Insert Into t_comment (author, text, article_id, like_count) Values ('Karl', 'Hier, ich! ^^ Wie wärs mit gemütlich einen Trinken und dann Park?', 8, 3);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Steffen', 'Oh ja, bei Karls Vorschlag wäre ich auch dabei ;) Wo und wann?', 8, 2);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Jenny', 'Mich auch!', 8, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Susi', 'Oke hört sich gut an. 19 Uhr bei mir? Bringt mal einer bitte ein Kartenspiel mit. Taxi innen Park hab ich auch  grad orgnanisiert ;)', 8, 3);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Hanna', 'Wenn du willst, können wir morgen an den See fahren :)', 8, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Susi', 'Jaaa, das wäre super!', 8, 0);
+
+Insert Into t_comment (author, text, article_id, like_count) Values ('Tim', 'Ich hab inner Firma n paar Vorschläge bekommen, hör dich doch da mal um?', 9, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Klaus', 'oha, das hört sich ja übel an.. Aber jetzt kanns ja nur noch besser werden!', 10, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Sabine', 'Och Süße, das tut mir ja Leid für dich :/ Kopf hoch, morgen is Mädelsabend! :)', 10, 2);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Leonie', 'Oh man, ich fühle mit dir! :/', 10, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Lynn', 'Hey das hört sich doch gut an. Freue mich auf weitere News ;)', 11, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('John', 'Alter, wusste ich ja gar nicht! Da muss ich dich da drüben aber mal besuchen kommen!', 11, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Jenny', 'ach du kacke :/', 12, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Hendrik', 'Hört sich mies an. Komm rum, wenn du willst, bei mir is alles ruhig ;)', 12, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Alice', 'Danke für das Angebot! Gerne morgen?', 12, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Hendrik', 'Geht klaa ;)', 12, 2);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Lena', 'Boah voll geiel! Nächstes mal bin ich auch wieder am Start!', 13, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Mirko', 'Wenn deine Autokorrektur dich noch versteht, bist du nicht betrunken genug :D', 13, 5);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Paul', 'Viel Spaß alter! Ich will n paar geile Geschichten hören, wenn du wieder da bist ;)', 13, 2);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Merle', 'Ooooh das hört sich ja super an! Darf ich euch morgen besuchen kommen? :):)', 14, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Lola', 'Oh ja, ich will auch!', 14, 1);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Lucy', 'Klaro, wir sind zuhause ;)', 14, 3);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Ralf', 'Oh man.. So viel Wind um eine Katze?! :D', 14, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Marco', 'Sag mal nix, kleine Kätzchen sind sau süß ja?!', 14, 4);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Ralf', 'Okee :D', 14, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Monika', 'Das hört sich doch klasse an! Viel Spaß noch!', 15, 0);
+Insert Into t_comment (author, text, article_id, like_count) Values ('Sascha', 'Ich wünsch dir auch viel Spaß da! Sag mal bescheid, wann ich mal auf ein Bier rum kommen kann ;)', 15, 1);
