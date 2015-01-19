@@ -1,7 +1,7 @@
 body{
 	margin: 0; padding: 1em;
     min-width: 41em; /* Mindestbreite verhindert Umbruch und Anzeigefehler in modernen Browsern */
-	font-family:Comic Sans MS, Arial, Times New Roman;
+	font-family:Arial, Times New Roman;
 	font-size:16px;
 	background-color:lightgrey;
   }
@@ -21,12 +21,12 @@ h2{
 textarea{
 	resize:none;
 	width:350%;
-	font-family:Comic Sans MS, Arial, Times New Roman;
+	font-family:Arial, Times New Roman;
 }
 
 input{
 	width:90%;
-	font-family:Comic Sans MS, Arial, Times New Roman;
+	font-family:Arial, Times New Roman;
 	}
 	
 input.new{
@@ -34,7 +34,7 @@ input.new{
 }
 	
 button{
-	font-family:Comic Sans MS, Arial, Times New Roman;
+	font-family:Arial, Times New Roman;
 	}
 
 #newArticle{

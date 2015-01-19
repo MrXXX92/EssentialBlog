@@ -2,27 +2,8 @@
 		include "include/connection.php";
 		include "include/function.php";
 		include "include/linkparameter.php";
-	if(isset($_POST['save'])){
-		$Title = $_POST['newTitle'];
-		$Author = $_POST['newAuthor'];
-		$Category = $_POST['newCategory'];
-		$Text = $_POST['newText'];
-		
-		$query = "INSERT INTO `t_article` (`author`, `title`, `text`, `category_id`) VALUES ('".$Author."', '".$Title."', '".$Text."', '2')";
-		GetDBConnection();
-			$insert = mysql_query($query);
-		CloseDBConnection();
-		
-		if($insert) { 
-			echo "<script>";
-			echo "alert('Artikel erfolgreich gespeichert!');"; 
-			echo "</script>";
-		}
-		else { 
-			echo "<script>";
-			echo "alert('Artikel konnte nicht gespeichert werden!');";  
-			echo "</script>";
-		} 
+	if(isset($_POST['saveArticle'])){
+		SaveArticle();
 	}
 ?>
 <!doctype html>
@@ -73,7 +54,7 @@
 				</tr>
 				<tr>
 					<td><br>
-							<input name="save" type="submit" submit="submit" value="Speichern" class="button">
+							<input name="saveArticle" type="submit" submit="submit" value="Speichern" class="button">
 						</form>
 						<form action='/'>
 							<input type='submit' value='Abbrechen'>

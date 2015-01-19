@@ -120,7 +120,7 @@
 	function GetArticleComments($article_id)
 	{
 		$query ="
-		SELECT author, text, create_time, like_count
+		SELECT comment_id, author, text, create_time, like_count
 		FROM t_comment
 		WHERE article_id=$article_id";
 		GetDBConnection();
@@ -143,5 +143,57 @@
 		return $result;
 	}
 	
-
+	//Speichert Artikel mit Atributen der ausgefüllten Feldern
+	function SaveArticle()
+	{
+		$Title = $_POST['newTitle'];
+		$Author = $_POST['newAuthor'];
+		$Category = $_POST['newCategory'];
+		$Text = $_POST['newText'];
+		
+		$query = "INSERT INTO `t_article` (`author`, `title`, `text`, `category_id`) VALUES ('".$Author."', '".$Title."', '".$Text."', '2')";
+		GetDBConnection();
+			$insert = mysql_query($query);
+		CloseDBConnection();
+		
+		if($insert) { 
+			echo "<script type='text/javascript'>"; 
+			echo "alert('Artikel erfolgreich gespeichert!');"; 
+			echo "window.location.href = 'index.php';";
+			echo "</script>";
+		}
+		else { 
+			echo "<script type='text/javascript'>";
+			echo "alert('Artikel konnte nicht gespeichert werden!');";  
+			echo "</script>";
+		}		
+	}	
+	
+	//Speichert den Kommentar zum dazugehörigen Artikel
+	function SaveComment($ArticleID,$CommentText,$CommentAuthor)
+	{		
+		$query = "INSERT INTO t_comment (author, text, article_id) VALUES ('".$CommentAuthor."', '".$CommentText."', '".$ArticleID."')";
+		GetDBConnection();
+			$insert = mysql_query($query);
+		CloseDBConnection();	
+	}
+	
+	//Erhöht den Like_Count des Artikels um 1
+	function SaveArticleLike($article_id)
+	{		
+		$query = "UPDATE t_article SET like_count= like_count+1 WHERE article_id=".$article_id.";";
+		GetDBConnection();
+			$insert = mysql_query($query);
+		CloseDBConnection();	
+	}		
+	
+	//Erhöht den Like_Count des Kommentars um 1
+	function SaveCommentLike($comment_id)
+	{		
+		$query = "UPDATE t_comment SET like_count= like_count+1 WHERE comment_id=".$comment_id.";";
+		GetDBConnection();
+			$insert = mysql_query($query);
+		CloseDBConnection();	
+	}
+	
 ?>

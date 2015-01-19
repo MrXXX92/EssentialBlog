@@ -58,7 +58,8 @@
 	while ($row = mysql_fetch_array($article_id_array, MYSQL_NUM)) {
 		$article_id = $row[0];
 		echo "	<!--linker Teil der Seite mit den Artikeln -->\n";
-	echo "	<div id=\"articleSection\">\n";
+		echo "	<div id=\"articleSection\">\n";
+		echo "	<A NAME='article".$article_id."'>";
 		echo "		<!--Abschnitt für 1 Artikel + Kommentare -->\n";
 		echo "		<table class= \"articleBorder\">\n";
 		echo "			<tr>\n";
@@ -78,7 +79,9 @@
 		echo "					<div class=\"articleText\">".GetArticleText($article_id)."</div>\n";
 		echo "					<div>\n";
 		echo "						<p align='right'>";
+		echo "							<a href='include/saveArticleLike.php?LikedArticleID=".$article_id."'>";
 		echo "							<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
+		echo "							</a>\n";
 		echo "							<label for=\"likes\">".GetArticleLikes($article_id)."</label>\n";
 		echo "						</p>";	
 		echo "					</div>\n";
@@ -103,14 +106,16 @@
 		echo "			<!--Liste der Kommentare-->";
 		$comment_array = GetArticleComments($article_id);
 		while ($row = mysql_fetch_array($comment_array, MYSQL_NUM)) {
-			$comment_author = $row[0];
-			$comment_text = $row[1];
-			$comment_time = $row[2];
-			$comment_likes = $row[3];
+			$comment_id = $row[0];
+			$comment_author = $row[1];
+			$comment_text = $row[2];
+			$comment_time = $row[3];
+			$comment_likes = $row[4];
 			
 			//Alle Kommentare eines Artikels gehören zur gleichen Klasse um sie zusammen ein- und ausblenden zu können
 			echo "		<tr class=\"comment".$article_id." comments\">\n";
 			echo "			<td class=\"commentDetail\">\n";
+			echo "				<A NAME='comment".$comment_id."'>";
 			echo "				<!--Kommentar-Header-->\n";
 			echo "				<div class=\"commentHeader\">\n";
 			echo "					von: <label for=\"author\">".$comment_author."</label>    am: <label for=\"date\">".$comment_time."</label>\n";
@@ -120,7 +125,9 @@
 			echo "				<div class=\"commentText\">".$comment_text."</div>\n";
 			echo "				<!--Likes Kommentar-->\n";
 			echo "				<div>\n";
-			echo "					<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
+			echo "					<a href='include/saveCommentLike.php?LikedCommentID=".$comment_id."'>";
+			echo "						<img src=\"images\smiley.png\" alt=\"like\" height=\"30\" width=\"30\">\n";
+			echo "					</a>\n";
 			echo "					<br>\n";
 			echo "					<label for=\"likes\">".$comment_likes."</label>\n";
 			echo "				</div>\n";
@@ -130,9 +137,13 @@
 		echo "			<!--neuen Kommentar eingeben-->\n";
 		echo "			<tr>\n";
 		echo "				<td class=\"newComment\">\n";
-		echo "					<input type=\"text\" name=\"commentBox1\" placeholder=\"neuer Kommentar...\"></input>\n";
+		echo "				<form method='post' action='include/saveComment.php?ArticleID=".$article_id."'  >";
+		echo "					<input type=\"text\" name=\"commentauthor\" placeholder=\"Author\"></input>\n";
 		echo "					<br>\n";
-		echo "					<button type=\"button\">Speichern</button> \n";
+		echo "					<input type=\"text\" name=\"commenttext\" placeholder=\"neuer Kommentar...\"></input>\n";
+		echo "					<br>\n";
+		echo "					<input name='saveComment' type='submit' submit='submit' value='Speichern' class='button'>";
+		echo "				</form>";
 		echo "				</td>\n";
 		echo "			</tr>\n";
 		echo "		</table>\n";
@@ -145,4 +156,5 @@
 	echo "	<br>\n";
 	echo "  </body>\n";
 	echo "</html>";
+	
 ?>
