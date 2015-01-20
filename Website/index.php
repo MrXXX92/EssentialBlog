@@ -26,10 +26,9 @@
 	echo "		<div id=\"sorter\">\n";
 	echo "			<FORM NAME=\"nav\">\n";
 	echo "			<SELECT NAME=\"SelectURL\" onChange=\"document.location.href=document.nav.SelectURL.options[document.nav.SelectURL.selectedIndex].value\">\n";
-	echo "				<OPTION VALUE=''SELECTED>Bitte Sortierung w&aumlhlen\n";
-	echo "				<OPTION VALUE=?&order=newestfirst&articlecategory=".$articlecategory."&displayedarticles=".$displayedarticles.">Neuester Artikel zuerst\n";
-	echo "				<OPTION VALUE=?&order=oldestfirst&articlecategory=".$articlecategory."&displayedarticles=".$displayedarticles.">&Aumlltester Artikel zuerst\n";
-	echo "				<OPTION VALUE=?&order=mostlikedfirst&articlecategory=".$articlecategory."&displayedarticles=".$displayedarticles.">Beliebtester Artikel zuerst\n";
+	echo "				<OPTION VALUE='?&order=newestfirst&articlecategory=".$articlecategory."&displayedarticles=".$displayedarticles."'";if ($order=='newestfirst'){echo "SELECTED";}echo ">Neuester Artikel zuerst\n";
+	echo "				<OPTION VALUE='?&order=oldestfirst&articlecategory=".$articlecategory."&displayedarticles=".$displayedarticles."'";if ($order=='oldestfirst'){echo "SELECTED";}echo ">&Aumlltester Artikel zuerst\n";
+	echo "				<OPTION VALUE='?&order=mostlikedfirst&articlecategory=".$articlecategory."&displayedarticles=".$displayedarticles."'";if ($order=='mostlikedfirst'){echo "SELECTED";}echo ">Beliebtester Artikel zuerst\n";
 	echo "			</SELECT>\n";
 	echo "			</FORM>";
 	echo "		</div>\n";
@@ -41,11 +40,15 @@
 	echo "		<ul id=\"categories\">\n";
 	
 	//Anzeigen der Kategorien mit Hyperlink zur Kategoriefilterung und Anzeige der Artikel-Anzahl pro Kategorie
-	$category_array = GetCategorys();
+	$category_array = GetCategorySum();
 	while ($row = mysql_fetch_array($category_array, MYSQL_NUM)) {
 		$category_name = $row[0];
 		$category_sum= $row[1];
-		echo "<li><a href=?&order=".$order."&articlecategory=".$category_name."&displayedarticles=".$displayedarticles.">".$category_name." (".$category_sum.")</a> </li>";
+		//Highlighte selektierte Kategorie
+		if ($category_name==$articlecategory){
+			echo "<b>";
+		}
+		echo "<li><a href=?&order=".$order."&articlecategory=".$category_name."&displayedarticles=".$displayedarticles.">".$category_name." (".$category_sum.")</a> </li></b>";
 	}
 	echo "		</ul>\n";
 	echo "	</div>\n";
@@ -68,11 +71,14 @@
 		echo "					<!--Titel + Header-->\n";
 		echo "					<div class=\"articleTitle\">".GetArticleTitle($article_id)."</div>\n";
 		echo "					<div class=\"articleHeader\">\n";
-		echo "						geschrieben von: \n";
+		echo "						dieser Artikel wurde am \n";
+		echo "						<label for=\"date\">".GetArticleDate($article_id)."</label>\n";		
+		echo "						von \n";
 		echo "						<label for=\"author\">".GetArticleAuthor($article_id)."</label>\n";
 		echo "						        \n";
-		echo "						am: \n";
-		echo "						<label for=\"date\">".GetArticleDate($article_id)."</label>\n";
+		echo "						in der Kategorie \n";
+		echo "						<label for=\"date\">".GetArticleCategory($article_id)."</label>\n";
+		echo "						gespeichert. \n";
 		echo "					</div>\n";
 		echo "					<br />\n";
 		echo "					<!--Artikel-Text-->\n";
@@ -118,7 +124,7 @@
 			echo "				<A NAME='comment".$comment_id."'>";
 			echo "				<!--Kommentar-Header-->\n";
 			echo "				<div class=\"commentHeader\">\n";
-			echo "					von: <label for=\"author\">".$comment_author."</label>    am: <label for=\"date\">".$comment_time."</label>\n";
+			echo "					geschrieben von <label for=\"author\">".$comment_author."</label>     <label for=\"date\">am ".$comment_time."</label>\n";
 			echo "				</div>\n";
 			echo "				<br>\n";
 			echo "				<!--Kommentar-Text-->\n";

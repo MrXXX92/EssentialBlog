@@ -66,7 +66,7 @@ CREATE TABLE `t_category` (
 
 LOCK TABLES `t_category` WRITE;
 /*!40000 ALTER TABLE `t_category` DISABLE KEYS */;
-INSERT INTO `t_category` VALUES (1,'Freizeit'),(2,'Reise'),(3,'Arbeit/ Uni');
+INSERT INTO `t_category` VALUES (1,'Freizeit'),(2,'Reise'),(3,'Arbeit/Uni');
 /*!40000 ALTER TABLE `t_category` ENABLE KEYS */;
 UNLOCK TABLES;
 

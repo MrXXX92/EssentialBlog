@@ -2,7 +2,6 @@
 	include "connection.php";
 	include "function.php";
 	
-	
 	if(isset($_POST['saveComment'])){
 		$CommentAuthor = $_POST['commentauthor'];
 		$CommentText = $_POST['commenttext'];
@@ -17,7 +16,7 @@
 		}
 		SaveComment($ArticleID,$CommentText,$CommentAuthor);
 		echo "<script type='text/javascript'>";; 
-		echo "window.location.href = '../index.php#article".$CommentID."';";
+		echo "window.location.href = '../index.php#article".$ArticleID."';";
 		echo "</script>";
 	}
 ?>

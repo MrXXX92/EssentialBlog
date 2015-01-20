@@ -83,7 +83,7 @@
 	function GetArticleDate($article_id)
 	{
 		$query ="
-		SELECT t_article.create_time FROM t_article
+		SELECT DATE_FORMAT (create_time,'%d.%m.%Y um %k:%i') FROM t_article
 		WHERE t_article.article_id='$article_id'";
 		GetDBConnection();
 		$result = mysql_query($query);
@@ -120,7 +120,7 @@
 	function GetArticleComments($article_id)
 	{
 		$query ="
-		SELECT comment_id, author, text, create_time, like_count
+		SELECT comment_id, author, text, DATE_FORMAT (create_time,'%d.%m.%Y um %k:%i') as create_time, like_count
 		FROM t_comment
 		WHERE article_id=$article_id";
 		GetDBConnection();
@@ -130,13 +130,25 @@
 	}
 	
 	//Ausgabe: Kategorien mit Anzahl der Beiträge anzeigen
-	function GetCategorys()
+	function GetCategorySum()
 	{
 		$query ="
 		SELECT t_category.title, COUNT(*) AS Anzahl
 		FROM t_category
 		INNER JOIN t_article ON t_article.category_id = t_category.category_id
 		GROUP BY t_category.category_id;";
+		GetDBConnection();
+		$result = mysql_query($query);
+		CloseDBConnection();
+		return $result;
+	}	
+	
+	//Ausgabe: Kategorien mit ID
+	function GetCategorys()
+	{
+		$query ="
+		SELECT t_category.category_id, t_category.title
+		FROM t_category;";
 		GetDBConnection();
 		$result = mysql_query($query);
 		CloseDBConnection();
@@ -151,7 +163,16 @@
 		$Category = $_POST['newCategory'];
 		$Text = $_POST['newText'];
 		
-		$query = "INSERT INTO `t_article` (`author`, `title`, `text`, `category_id`) VALUES ('".$Author."', '".$Title."', '".$Text."', '2')";
+		//Prüfung ob alle Parameter gefüllt sind
+		if($Title == NULL OR $Author == NULL OR $Category == "0" OR $Text == NULL ){
+			echo "<script type='text/javascript'>"; 
+			echo "alert('Bitte alle Felder ausfuellen!');"; 
+			echo "window.location.href = 'newArticle.php';";
+			echo "</script>";
+			die();
+		}
+		
+		$query = "INSERT INTO `t_article` (`author`, `title`, `text`, `category_id`) VALUES ('".$Author."', '".$Title."', '".$Text."', '".$Category."')";
 		GetDBConnection();
 			$insert = mysql_query($query);
 		CloseDBConnection();
@@ -167,11 +188,50 @@
 			echo "alert('Artikel konnte nicht gespeichert werden!');";  
 			echo "</script>";
 		}		
+	}		
+	
+	//Speichert neue Kategorie
+	function SaveCategory()
+	{
+		$Category = $_POST['newCategory'];
+		//Prüfung ob alle Parameter gefüllt sind
+		if($Category == NULL){
+			echo "<script type='text/javascript'>"; 
+			echo "alert('Bitte alle Felder ausfuellen!');"; 
+			echo "window.location.href = 'newCategory.php';";
+			echo "</script>";
+			die();
+		}
+		$query = "INSERT INTO `t_category` (`title`) VALUES ('".$Category."')";
+		GetDBConnection();
+			$insert = mysql_query($query);
+		CloseDBConnection();
+		
+		if($insert) { 
+			echo "<script type='text/javascript'>"; 
+			echo "alert('Kategorie erfolgreich gespeichert!');"; 
+			echo "window.location.href = 'newArticle.php';";
+			echo "</script>";
+		}
+		else { 
+			echo "<script type='text/javascript'>";
+			echo "alert('Kategorie konnte nicht gespeichert werden!');";  
+			echo "</script>";
+		}		
 	}	
 	
 	//Speichert den Kommentar zum dazugehörigen Artikel
 	function SaveComment($ArticleID,$CommentText,$CommentAuthor)
-	{		
+	{	
+
+		//Prüfung ob alle Parameter gefüllt sind
+		if($ArticleID == NULL OR $CommentText == NULL OR $CommentAuthor == NULL ){
+			echo "<script type='text/javascript'>"; 
+			echo "alert('Bitte alle Felder ausfuellen!');"; 
+			echo "window.location.href = '../index.php';";
+			echo "</script>";
+			die();
+		}
 		$query = "INSERT INTO t_comment (author, text, article_id) VALUES ('".$CommentAuthor."', '".$CommentText."', '".$ArticleID."')";
 		GetDBConnection();
 			$insert = mysql_query($query);

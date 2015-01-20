@@ -6,7 +6,7 @@
 		$order = $_GET['order'];
 	}else{
 		// Parameter ist im Link nicht definiert/ Default Wert
-		$order = 'DESC';
+		$order = 'newestfirst';
 	}
 	
 	// Parameter für Anzahl der dargestellten Artikel
