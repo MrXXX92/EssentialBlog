@@ -3,7 +3,7 @@ body{
     min-width: 41em; /* Mindestbreite verhindert Umbruch und Anzeigefehler in modernen Browsern */
 	font-family:Arial, Times New Roman;
 	font-size:16px;
-	background-color:lightgrey;
+	background-image: linear-gradient(135deg, silver 25%, green 65%);
   }
 h1{
 	position:absolute;
@@ -42,23 +42,20 @@ button{
 	top:145px;
 	float:left;
 	width:90%;
-	border-style:solid;
-}
+	}
   
 #new{
 	position:relative;
 	top:110px;
 	float:left;
 	width:40%;
-	border-style:solid;
-}
+	}
 
 #sorter{
 	position:relative;
 	float:right;
 	margin: 0 0 1.1em; padding: 0;
 	top:110px;
-	border-style:solid;
 	width:55%
 	}  
  
