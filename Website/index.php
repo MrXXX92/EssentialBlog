@@ -14,7 +14,7 @@
 	echo "	<script language=\"javascript\" type=\"text/javascript\" src=\"include\clientFunctions.js\"></script>\n";
 	echo "  </head>\n";
 	echo "  <body>\n";
-	echo "    <h1><a href=/index.php>Essential Blog</a></h1>\n";
+	echo "    <h1><a href=/index.php><img src='images/header.png'></a></h1>\n<br><br><br>";
 	echo "	\n";
 	echo "	<div id=\"header\">\n";
 	echo "			<div id=\"new\">\n";
